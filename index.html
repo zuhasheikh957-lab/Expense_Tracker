@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <a href="signup.html">Signup</a>
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<a href="login.html">Login</a>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <title>ExpenseTracker | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  
+  <script>
+    
+document.querySelectorAll('header a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+</head>
+<script>
+const ctx = document.getElementById('expenseChart').getContext('2d');
+const expenseChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Food', 'Transport', 'Utilities', 'Entertainment', 'Others'],
+        datasets: [{
+            label: 'Expenses',
+            data: [500, 300, 200, 150, 100],
+            backgroundColor: [
+                '#38bdf8', '#22c55e', '#facc15', '#f472b6', '#a855f7'
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+    }
+});
+</script>
+<body>
+
+<!-- HEADER -->
+<header class="navbar">
+  <div class="logo">ExpenseTracker</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="features.html">Features</a>
+    <a href="contact.html">Contact</a>
+    <button onclick="openLogin()">Login</button>
+    <button class="signup-btn" onclick="openSignup()">Sign Up</button>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Track Your <span>Expenses</span><br>Smartly & Securely</h1>
+    <p>
+         A modern personal expense tracker that helps you manage daily spending,
+      analyze reports, and stay financially disciplined.
+    </p>
+    <a href="#" class="cta">Get Started</a>
+  </div>
+
+  <div class="hero-box">
+    <div id="particles-js"></div>
+    <h3>Why Choose Us?</h3>
+    <ul>
+      <li>✔ Simple expense entry</li>
+      <li>✔ Category-based tracking</li>
+      <li>✔ Weekly & monthly reports</li>
+      <li>✔ Secure & user-friendly</li>
+    </ul>
+  </div>
+</section>
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <span onclick="closeLogin()" class="close">&times;</span>
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+  </div>
+</div>
+
+<!-- SIGNUP POPUP -->
+<div class="modal" id="signupModal">
+  <div class="modal-content">
+    <span onclick="closeSignup()" class="close">&times;</span>
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="Full Name">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Create Account</button>
+  </div>
+</div>
+
+
+
+<script>
+  function openLogin(){ document.getElementById("loginModal").style.display="flex"; }
+  function closeLogin(){ document.getElementById("loginModal").style.display="none"; }
+
+  function openSignup(){ document.getElementById("signupModal").style.display="flex"; }
+  function closeSignup(){ document.getElementById("signupModal").style.display="none"; }
+</script>
+<section class="features">
+  <h2>Powerful Features</h2>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>💸 Expense Tracking</h3>
+      <p>Easily record daily expenses with category and date.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>📊 Smart Reports</h3>
+      <p>Generate weekly and monthly summaries instantly.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>🗂 Category Wise Data</h3>
+      <p>Analyze spending on food, transport, utilities & more.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>🔐 Secure Access</h3>
+      <p>User login system ensures privacy and data security.</p>
+    </div>
+  </div>
+</section>
+<section class="counters">
+  <div class="counter-card">
+    <h3 class="count" data-target="10000">10</h3>
+    <p>Expenses Recorded</p>
+  </div>
+  <div class="counter-card">
+    <h3 class="count" data-target="500">10</h3>
+    <p>Active Users</p>
+  </div>
+  <div class="counter-card">
+    <h3 class="count" data-target="20">10</h3>
+    <p>Expense Categories</p>
+  </div>
+</section>
+<section class="charts">
+  <h2>Monthly Spending Preview</h2>
+  <canvas id="expenseChart" width="400" height="200"></canvas>
+</section>
+<div class="feature-card scroll-animate">
+  <i class="fas fa-coins"></i>
+  <h3>Expense Tracking</h3>
+  <p>Record daily expenses easily by category and date.</p>
+</div>
+<script>
+const scrollElements = document.querySelectorAll('.scroll-animate');
+
+const elementInView = (el, dividend = 1) => {
+  const elementTop = el.getBoundingClientRect().top;
+  return (
+    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+  );
+};
+
+const displayScrollElement = (element) => {
+  element.classList.add('visible');
+};
+
+const hideScrollElement = (element) => {
+  element.classList.remove('visible');
+  };
+
+const handleScrollAnimation = () => {
+  scrollElements.forEach((el) => {
+    if(elementInView(el, 1.25)){
+      displayScrollElement(el);
+    } else {
+      hideScrollElement(el);
+    }
+  });
+};
+
+window.addEventListener('scroll', () => {
+  handleScrollAnimation();
+});
+</script>
+<button id="theme-toggle">🌙</button>
+<script>
+const toggleBtn = document.getElementById('theme-toggle');
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+  if(document.body.classList.contains('light-mode')){
+    toggleBtn.textContent = "🌙"; // switch icon
+  } else {
+    toggleBtn.textContent = "☀";
+  }
+});
+</script>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": {"value": 50},
+    "size": {"value": 3},
+    "color": {"value": "#38bdf8"},
+    "line_linked": {"enable": true, "distance": 120, "color": "#38bdf8"},
+    "move": {"speed": 2}
+  },
+  "interactivity": {
+    "events": {"onhover": {"enable": true, "mode": "repulse"}}
+  }});
+</script>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+<section class="progress-section">
+  <h2>Budget Progress</h2>
+  <div class="progress-container">
+    <p>Food: <span>70%</span></p>
+    <div class="progress-bar"><div style="width:0%"></div></div>
+
+    <p>Transport: <span>50%</span></p>
+    <div class="progress-bar"><div style="width:0%"></div></div>
+
+    <p>Entertainment: <span>30%</span></p>
+    <div class="progress-bar"><div style="width:0%"></div></div>
+  </div>
+</section>
+<script>
+window.addEventListener('load', () => {
+  document.querySelectorAll('.progress-bar div').forEach((bar, index) => {
+    const widths = [70,50,30]; // percentages for each bar
+    setTimeout(()=>{ bar.style.width = widths[index]+'%'; }, 500);
+  });
+});
+</script>
+<section class="dashboard-preview">
+  <h2>Dashboard Preview</h2>
+  <table>
+    <thead>
+      <tr><th>Date</th><th>Category</th><th>Amount</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2026-01-01</td><td>Food</td><td>$12</td></tr>
+      <tr><td>2026-01-01</td><td>Transport</td><td>$5</td></tr>
+      <tr><td>2026-01-02</td><td>Utilities</td><td>$20</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="testimonials">
+  <h2>What Users Say</h2>
+  <div class="testimonial-carousel">
+    <div class="testimonial"> 
+      <p>"ExpenseTracker makes budgeting so easy and visual!"</p>
+      <h4>- Ali R.</h4>
+    </div>
+    <div class="testimonial">
+      <p>"I can finally track all my expenses in one place."</p>
+      <h4>- Sara K.</h4>
+    </div>
+    <div class="testimonial">
+      <p>"The reports help me manage my finances smartly."</p>
+      <h4>- Ahmed L.</h4>
+    </div>
+  </div>
+</section>
+<script>
+const carousel = document.querySelector('.testimonial-carousel');
+let scrollAmount = 0;
+setInterval(() => {
+  scrollAmount += 310; // width + gap
+  if(scrollAmount >= carousel.scrollWidth - carousel.clientWidth){
+    scrollAmount = 0;
+  }
+  carousel.scrollTo({left: scrollAmount, behavior: 'smooth'});
+}, 3000);
+</script>
+<section class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="accordion">
+    <button class="accordion-btn">How do I add an expense?</button>
+    <div class="panel">
+      <p>Click on Add Expense, fill in the details, and save.</p>
+    </div>
+
+    <button class="accordion-btn">Can I edit or delete records?</button>
+    <div class="panel">
+      <p>Yes, click on the expense record and choose edit or delete.</p>
+    </div>
+
+    <button class="accordion-btn">Does it provide charts?</button>
+    <div class="panel">
+      <p>Yes, monthly and weekly charts are available under Reports.</p>
+    </div>
+  </div>
+</section>
+<script>
+const accordions = document.querySelectorAll(".accordion-btn");
+accordions.forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.classList.toggle("active");
+    const panel = btn.nextElementSibling;
+    if(panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+});
+</script>
+<button id="scrollTopBtn">⬆</button>
+<script>
+const scrollBtn = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll', () => {
+  if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
+    scrollBtn.style.display = "block";
+  } else {
+    scrollBtn.style.display = "none";
+  }
+});
+scrollBtn.addEventListener('click', () => {
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+</script>
+<footer>
+  <p>&copy; 2026 Personal Expense Tracker. All rights reserved.</p>
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+
+
+
+</body>
+</html>          

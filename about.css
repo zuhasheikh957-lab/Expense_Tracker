@@ -1,0 +1,231 @@
+🎨 about.css
+css
+Copy code
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body{
+  background:#f5f7fb;
+  color:#333;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 60px;
+  background:#0f172a;
+}
+
+.logo{
+  color:#38bdf8;
+  font-size:22px;
+  font-weight:bold;
+}
+
+nav a{
+  color:#e5e7eb;
+  margin-left:25px;
+  text-decoration:none;
+  font-size:16px;
+  transition:0.3s;
+}
+
+nav a:hover,
+nav a.active{
+  color:#38bdf8;
+}
+
+/* HERO */
+.about-hero{
+  text-align:center;
+  padding:70px 20px;
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  color:white;
+}
+
+.about-hero h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.about-hero p{
+  font-size:18px;
+  opacity:0.9;
+}
+
+/* ABOUT CARDS */
+.about-content{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  padding:60px 8%;
+}
+
+.about-card{
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.about-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.about-card i{
+  font-size:40px;
+  color:#38bdf8;
+  margin-bottom:15px;
+}
+
+.about-card h2{
+  margin-bottom:10px;
+  color:#0f172a;
+}
+
+.about-card p{
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+  background:#0f172a;
+  color:#cbd5f5;
+  text-align:center;
+  padding:20px;
+  margin-top:60px;
+}
+.team{
+  padding:60px 8%;
+  background:#f1f5f9;
+}
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:30px;
+  margin-top:30px;
+  text-align:center;
+}
+
+.team-card{
+  background:white;
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.team-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.team-card img{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:50%;
+  margin-bottom:15px;
+}
+2️⃣ Timeline / Project Journey
+Show a step-by-step development timeline of your PET system. This is great for viva.
+
+HTML
+html
+Copy code
+<section class="timeline">
+  <h2 class="section-title">Project Journey</h2>
+  <div class="timeline-container">
+    <div class="timeline-item">
+      <h3>Week 1-2</h3>
+      <p>Requirement gathering and project planning.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Week 3-6</h3>
+      <p>Designing UI and HTML/CSS prototype.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Week 7-10</h3>
+      <p>Implementing Python logic & structured modules.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Week 11-15</h3>
+      <p>Integrating UI, features, and testing.</p>
+    </div>
+  </div>
+</section>
+CSS
+css
+Copy code
+.timeline{
+  padding:60px 8%;
+}
+
+.timeline-container{
+  display:grid;
+  gap:25px;
+}
+
+.timeline-item{
+  background:#0f172a;
+  color:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.timeline-item:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+3️⃣ Mission + Vision Side by Side
+Instead of vertical cards, make two columns for Mission & Vision for a cleaner look.
+
+HTML
+html
+Copy code
+<section class="mission-vision">
+  <div class="mv-card">
+    <h2>Our Mission</h2>
+    <p>Help users manage expenses efficiently with a user-friendly system.</p>
+  </div>
+  <div class="mv-card">
+    <h2>Our Vision</h2>
+    <p>Develop intelligent and secure tools for better financial planning.</p>
+  </div>
+</section>
+CSS
+css
+Copy code
+.mission-vision{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  padding:60px 8%;
+}
+
+.mv-card{
+  background:#ffffff;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.mv-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
